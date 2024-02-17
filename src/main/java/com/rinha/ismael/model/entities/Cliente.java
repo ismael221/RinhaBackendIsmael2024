@@ -1,4 +1,4 @@
-package com.rinha.ismael.model;
+package com.rinha.ismael.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;

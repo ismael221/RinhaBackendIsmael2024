@@ -1,20 +1,19 @@
 package com.rinha.ismael.controller;
 
 import com.rinha.ismael.exception.UnprocessableEntityException;
-import com.rinha.ismael.model.*;
+import com.rinha.ismael.model.entities.Cliente;
+import com.rinha.ismael.model.entities.Transacao;
+import com.rinha.ismael.model.util.RespostaExtrato;
+import com.rinha.ismael.model.util.RespostaTransacao;
+import com.rinha.ismael.model.util.Saldo;
 import com.rinha.ismael.service.ClienteService;
 import com.rinha.ismael.service.TransacaoService;
-import org.apache.logging.log4j.util.PerformanceSensitive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.*;
 
 @RestController
 @RequestMapping("/clientes")

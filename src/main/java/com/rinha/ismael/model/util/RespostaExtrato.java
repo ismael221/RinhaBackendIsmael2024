@@ -1,5 +1,6 @@
-package com.rinha.ismael.model;
+package com.rinha.ismael.model.util;
 
+import com.rinha.ismael.model.entities.Transacao;
 import lombok.Data;
 import java.util.List;
 

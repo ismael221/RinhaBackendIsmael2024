@@ -1,4 +1,4 @@
-package com.rinha.ismael.model;
+package com.rinha.ismael.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.Instant;
-import java.util.Date;
 
 @Data
 @Entity

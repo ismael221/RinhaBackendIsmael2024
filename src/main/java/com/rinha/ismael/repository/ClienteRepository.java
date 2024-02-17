@@ -1,6 +1,6 @@
 package com.rinha.ismael.repository;
 
-import com.rinha.ismael.model.Cliente;
+import com.rinha.ismael.model.entities.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

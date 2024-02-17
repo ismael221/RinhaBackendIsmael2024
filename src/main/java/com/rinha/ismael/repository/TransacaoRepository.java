@@ -1,6 +1,6 @@
 package com.rinha.ismael.repository;
 
-import com.rinha.ismael.model.Transacao;
+import com.rinha.ismael.model.entities.Transacao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
