@@ -3,7 +3,7 @@ package com.rinha.ismael.model.util;
 import lombok.Data;
 
 import java.time.Instant;
-import java.util.Date;
+
 
 @Data
 public class Saldo {

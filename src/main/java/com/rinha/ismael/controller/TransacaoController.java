@@ -61,7 +61,7 @@ public class TransacaoController {
                         clienteService.addSaldoCliente(c);
                         return new ResponseEntity<>(respostaTransacao,HttpStatus.OK);
                     }else {
-                        throw new UnprocessableEntityException("Saldo do cliente não pode ficar menor que o limite disponivel");
+                        throw new UnprocessableEntityException("Saldo do cliente não pode ficar menor que o limite disponivel para o tipo débito");
                     }
     }
 
@@ -76,7 +76,7 @@ public class TransacaoController {
         saldo.setData_extrato(instant);
         saldo.setLimite(cliente.getLimite());
         extrato.setSaldo(saldo);
-        extrato.setUltimas_transacaos(transacaoService.listarTransacoes(id));
+        extrato.setUltimas_transacoes(transacaoService.listarTransacoes(id));
         //Lista de objetos transacoes:
         return new ResponseEntity<>(extrato,HttpStatus.OK);
     }

@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class RespostaExtrato {
     private Saldo saldo;
-    private List<Transacao> ultimas_transacaos;
+    private List<Transacao> ultimas_transacoes;
 }
