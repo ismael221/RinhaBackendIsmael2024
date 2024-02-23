@@ -5,8 +5,10 @@ import com.rinha.ismael.model.entities.Cliente;
 import com.rinha.ismael.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;

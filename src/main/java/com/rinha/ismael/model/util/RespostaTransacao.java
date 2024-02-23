@@ -2,8 +2,5 @@ package com.rinha.ismael.model.util;
 
 import lombok.Data;
 
-@Data
-public class RespostaTransacao {
-        private int limite;
-        private int saldo;
+public record RespostaTransacao(int limite,int saldo) {
 }

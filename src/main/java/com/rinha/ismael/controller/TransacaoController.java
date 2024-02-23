@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
+import java.util.List;
 
 @RestController
 @RequestMapping("/clientes")
@@ -37,9 +38,7 @@ public class TransacaoController {
                         Instant instant = Instant.now();
                         transacao.setRealizada_em(instant);
                         transacaoService.addTransacao(transacao);
-                        RespostaTransacao respostaTransacao = new RespostaTransacao();
-                        respostaTransacao.setLimite(limite);
-                        respostaTransacao.setSaldo(debito);
+                        RespostaTransacao respostaTransacao = new RespostaTransacao(limite,debito);
                         Cliente c = new Cliente();
                         c.setId(id);
                         c.setLimite(limite);
@@ -51,9 +50,7 @@ public class TransacaoController {
                         Instant instant = Instant.now();
                         transacao.setRealizada_em(instant);
                         transacaoService.addTransacao(transacao);
-                        RespostaTransacao respostaTransacao = new RespostaTransacao();
-                        respostaTransacao.setLimite(limite);
-                        respostaTransacao.setSaldo(credito);
+                        RespostaTransacao respostaTransacao = new RespostaTransacao(limite,credito);
                         Cliente c = new Cliente();
                         c.setId(id);
                         c.setLimite(limite);
@@ -67,17 +64,11 @@ public class TransacaoController {
 
     @GetMapping("/{id}/extrato")
     public ResponseEntity<RespostaExtrato> listarExtrato(@PathVariable int id){
-        RespostaExtrato extrato = new RespostaExtrato();
-        Saldo saldo = new Saldo();
         Cliente cliente = clienteService.mostraSaldoCliente(id);
-        //Objeto Saldo:
-        saldo.setTotal(cliente.getSaldo());
         Instant instant = Instant.now();
-        saldo.setData_extrato(instant);
-        saldo.setLimite(cliente.getLimite());
-        extrato.setSaldo(saldo);
-        extrato.setUltimas_transacoes(transacaoService.listarTransacoes(id));
-        //Lista de objetos transacoes:
-        return new ResponseEntity<>(extrato,HttpStatus.OK);
+        Saldo saldo = new Saldo(cliente.getSaldo(),instant,cliente.getLimite());
+        List<Transacao> ultimasTransacoes = transacaoService.listarTransacoes(id);
+        RespostaExtrato respostaExtrato = new RespostaExtrato(saldo, ultimasTransacoes);
+        return new ResponseEntity<>(respostaExtrato,HttpStatus.OK);
     }
 }

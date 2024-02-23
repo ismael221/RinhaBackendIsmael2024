@@ -5,9 +5,5 @@ import lombok.Data;
 import java.time.Instant;
 
 
-@Data
-public class Saldo {
-    private int total;
-    private Instant data_extrato;
-    private int limite;
+public record Saldo(int total,Instant data_extrato,int limite) {
 }

@@ -9,6 +9,7 @@ import java.time.Instant;
 
 @Data
 @Entity
+@Table(name = "transacao")
 public class Transacao {
     @JsonIgnore
     @Id
