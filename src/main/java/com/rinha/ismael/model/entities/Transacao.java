@@ -21,7 +21,6 @@ public class Transacao {
     private Instant realizada_em;
     @ManyToOne
     @JoinColumn(name = "id_cliente")
-    @JsonBackReference
     private Cliente cliente;
 
 }

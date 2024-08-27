@@ -17,6 +17,6 @@ public class Cliente {
     private int limite;
     private int saldo;
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    @Fetch(FetchMode.JOIN)
+   // @Fetch(FetchMode.JOIN)
     List<Transacao> transacaos;
 }

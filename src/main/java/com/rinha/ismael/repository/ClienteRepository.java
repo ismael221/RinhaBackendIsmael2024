@@ -8,4 +8,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente,Integer> {
+
 }

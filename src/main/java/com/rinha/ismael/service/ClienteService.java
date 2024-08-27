@@ -13,11 +13,11 @@ public class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 
-    public Cliente mostraSaldoCliente(int id_cliente){
+    public Cliente getCliente(int id_cliente){
        return clienteRepository.findById(id_cliente).orElseThrow(() -> new ResourceNotFoundException("Cliente não encontrado"));
     }
 
-    public void addSaldoCliente(Cliente c){
-        clienteRepository.save(c);
+    public Cliente addSaldoCliente(Cliente c){
+        return clienteRepository.save(c);
     }
 }
