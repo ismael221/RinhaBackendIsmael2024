@@ -21,6 +21,16 @@
 DROP DATABASE IF EXISTS rinha;
 CREATE DATABASE rinha;
 USE rinha;
+
+-- Cria um usuário não-root com uma senha específica
+CREATE USER 'ismael'@'%' IDENTIFIED BY 'rinha123';
+
+-- Concede permissões ao usuário para o banco de dados
+GRANT ALL PRIVILEGES ON rinha.* TO 'ismael'@'%';
+
+-- Aplica as mudanças de privilégios
+FLUSH PRIVILEGES;
+
 DROP TABLE IF EXISTS `cliente_seq`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;

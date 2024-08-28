@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  api01:
+    image: ismael:latest
+    hostname: api01
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql
+    environment:
+      - DATASOURCE_USERNAME=ismael
+      - DATASOURCE_PASSWORD=rinha123
+      - DATASOURCE_URL=jdbc:mysql://mysql:3306/rinha
+
+  api02:
+    image: ismael:latest
+    hostname: api02
+    ports:
+      - "8082:8080"
+    depends_on:
+      - mysql
+    environment:
+      - DATASOURCE_USERNAME=ismael
+      - DATASOURCE_PASSWORD=rinha123
+      - DATASOURCE_URL=jdbc:mysql://mysql:3306/rinha
+
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ismael
+    volumes:
+      #- mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "9999:9999"
+    depends_on:
+      - api01
+      - api02
+
+volumes:
+  mysql-data:
